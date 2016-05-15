@@ -12,7 +12,7 @@ test:
 
 production:
   adapter: postgresql
-  database: ddbadnvf0g5rs5
+  database: turemesatest
   user: adminse81qty
   password: uUxFc8jPzXP1
   pool: 5
