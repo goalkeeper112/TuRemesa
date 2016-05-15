@@ -1,0 +1,39 @@
+<div class="container">
+  <h1 class="page-title">Tus Remesas</h1>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Destinatario</th>
+          <th>País</th>
+          <th>Enviaste</th>
+          <th>Recibio</th>
+          <th>Banco</th>
+          <th>Tipo</th>
+          <th>Número de Cuenta</th>
+          <th>Cedula</th>
+          <th>Estatús</th>
+          <th>Cancelar</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% @remittances.each do |remittance| %>
+        <tr>
+          <td><%= remittance.first_name %> <%= remittance.last_name %></td>
+          <td><%= remittance.country %></td>
+          <td><%= remittance.amount_send %> <%= remittance.from %></td>
+          <td><%= remittance.amount_receive %> <%= remittance.to %></td>
+          <td><%= remittance.bank %></td>
+          <td><%= remittance.type_account %></td>
+          <td><%= remittance.number_account %></td>
+          <td><%= remittance.id_card %></td>
+          <td></td>
+          <td><%= link_to "Cancelar", { :action => :destroy, :id => remittance.id }, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
