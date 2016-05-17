@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515014436) do
+ActiveRecord::Schema.define(version: 20160517130054) do
 
   create_table "remittances", force: :cascade do |t|
     t.integer  "user_id"
@@ -25,9 +25,14 @@ ActiveRecord::Schema.define(version: 20160515014436) do
     t.string   "bank"
     t.string   "type_account"
     t.string   "id_card"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "number_account", limit: 20
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "number_account",   limit: 20
+    t.string   "status"
+    t.string   "method_pay"
+    t.datetime "date_withdrawal"
+    t.string   "optional_address"
+    t.string   "optional_info"
   end
 
   add_index "remittances", ["user_id"], name: "index_remittances_on_user_id"
@@ -51,13 +56,16 @@ ActiveRecord::Schema.define(version: 20160515014436) do
     t.string   "last_sign_in_ip"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "country"
     t.datetime "birthday"
     t.string   "id_card"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "role_id"
     t.string   "username"
+    t.integer  "mobile_phone"
+    t.integer  "home_phone"
+    t.string   "address"
+    t.string   "id_document"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

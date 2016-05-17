@@ -1,62 +1,125 @@
-<%= form_for @remittance, as: :remittance, :url => { :action => :create } do |f| %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
+<div class="container">
+  <h2 class="page-title">Nueva remesa</h2>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
+    <div class="form form-horizontal">
+      <%= form_for @remittance, as: :remittance, :url => { :action => :create } do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= hidden_field_tag "rate", @rate_vef, { :id => "rate_vef" } %>
+        <%= hidden_field_tag "rate", @rate_ars, { :id => "rate_ars" } %>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true %>
-  </div>
+        <div class="field">
+          <div class="col-xs-12">
+            <%= f.label :country %><br />
+            <select class="form-control" name="remittance[country]" id="remittance_country">
+              <option value="Argentina">Argentina</option>
+              <option value="Venezuela">Venezuela</option>
+              <option value="Brasil">Brasil</option>
+            </select>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country, autofocus: true %>
-  </div>
+        <div class="field">
+          <div class="col-xs-6">
+            <%= f.label :from %><br />
+            <select class="form-control" name="remittance[from]" id="remittance_from">
+              <option value="ARS">Pesos Argentinos</option>
+              <option value="VEF">Bolivares</option>
+              <option value="USD">Dolares Estadounidenses</option>
+            </select>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :from %><br />
-    <%= f.text_field :from, autofocus: true %>
-  </div>
+        <div class="field">
+          <div class="col-xs-6">
+            <%= f.label :to %><br />
+            <select class="form-control" name="remittance[to]" id="remittance_to">
+              <option value="ARS">Pesos Argentinos</option>
+              <option value="VEF">Bolivares</option>
+              <option value="USD">Dolares Estadounidenses</option>
+            </select>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :to %><br />
-    <%= f.text_field :to, autofocus: true %>
-  </div>
+        <div class="field">
+          <div class="col-xs-6">
+            <%= f.label :amount_send %><br />
+            <%= f.number_field :amount_send, autofocus: true, class: 'form-control' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :amount_send %><br />
-    <%= f.number_field :amount_send, autofocus: true %>
-  </div>
+        <div class="field">
+          <div class="col-xs-6">
+            <%= f.label :amount_receive %><br />
+            <%= f.number_field :amount_receive, autofocus: false, disabled: true, class: 'form-control' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :amount_receive %><br />
-    <%= f.number_field :amount_receive, autofocus: true %>
-  </div>
+        <div class="field">
+          <div class="col-xs-12">
+            <%= f.label :method_pay %><br />
+            <select class="form-control" name="remittance[method_pay]" id="remittance_method_pay">
+  						<option value="transferencia">Transferencia Bancaria</option>
+  						<option value="entrega">Entrega en Sucursal</option>
+  						<option value="retiro">Retiro de Efectivo</option>
+  					</select>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :bank %><br />
-    <%= f.text_field :bank, autofocus: true %>
-  </div>
+        <div class="field">
+          <div class="col-xs-6">
+            <%= f.label :first_name %><br />
+            <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :type_account %><br />
-    <%= f.text_field :type_account, autofocus: true %>
-  </div>
+        <div class="field">
+          <div class="col-xs-6">
+            <%= f.label :last_name %><br />
+            <%= f.text_field :last_name, autofocus: true, class: 'form-control' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :number_account %><br />
-    <%= f.text_field :number_account, autofocus: true %>
-  </div>
+        <div id="banks_details">
+          <div class="field">
+            <div class="col-xs-4">
+              <%= f.label :bank %><br />
+              <%= f.text_field :bank, autofocus: true, class: 'form-control' %>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= f.label :id_card %><br />
-    <%= f.text_field :id_card, autofocus: true %>
-  </div>
+          <div class="field">
+            <div class="col-xs-4">
+              <%= f.label :type_account %><br />
+              <select class="form-control" name="remittance[type_account]" id="remittance_type_account">
+                <option value="corriente">Corriente</option>
+                <option value="ahorros">Ahorros</option>
+              </select>
+            </div>
+          </div>
 
-  <div class="actions">
-    <%= f.submit "Solicitar" %>
+          <div class="field">
+            <div class="col-xs-4">
+              <%= f.label :number_account %><br />
+              <%= f.text_field :number_account, autofocus: true, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="col-xs-12">
+            <%= f.label :id_card %><br />
+            <%= f.text_field :id_card, autofocus: true, class: 'form-control' %>
+          </div>
+        </div>
+
+
+
+        <div class="actions">
+          <div class="col-xs-12">
+            <%= f.submit "Solicitar", class: 'form-control' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>

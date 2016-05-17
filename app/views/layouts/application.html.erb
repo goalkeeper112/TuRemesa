@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 	<meta name="mobile-web-app-capable" content="yes">
 
 	<meta name="apple-mobile-web-app-capable" content="yes">
-  <title>RemesasRails</title>
+  <meta charset="UTF-8">
+	<title>TuRemesa|Envia y Recibe Dinero donde quieras</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -32,7 +33,10 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li><a href="/dashboard">Dashboard</a></li>
-          <li><%= link_to 'Nueva', 'remittances/new' %></li>
+          <li><%= link_to 'Nueva Remesa', 'remittances/new' %></li>
+          <% if current_user.role["name"] === 'admin' %>
+            <li><%= link_to 'Remesas', 'remittances#index' %></li>
+          <% end %>
           <li><%= link_to 'Salir', 'logout', :method => :delete %></li>
         <% else %>
           <li><a href="/login">Entrar</a></li>
