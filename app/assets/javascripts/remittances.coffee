@@ -3,24 +3,21 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
   $("#remittance_method_pay").on 'change keyup', ->
+    console.log $(@).val()
     if $(@).val() is "transferencia"
       $("#banks_details").show()
-    else
-      $("#banks_details").hide()
+      $("#retiro_details").hide()
+      $("#entrega_details").hide()
 
     if $(@).val() is "entrega"
       $("#entrega_details").show()
       $("#banks_details").hide()
-    else
-      $("#entrega_details").hide()
-      $("#banks_details").hide()
+      $("#retiro_details").hide()
 
     if $(@).val() is "retiro"
       $("#retiro_details").show()
       $("#banks_details").hide()
-    else
-      $("#retiro_details").hide()
-      $("#banks_details").hide()
+      $("#entrega_details").hide()
 
   $('#remittance_amount_send').bind 'change paste keyup', ->
     console.log $("#rate").val()

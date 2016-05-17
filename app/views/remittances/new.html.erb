@@ -105,6 +105,33 @@
           </div>
         </div>
 
+        <div id="retiro_details">
+          <div class="field">
+            <div class="col-xs-6">
+              <%= f.label :date_withdrawal %><br />
+              <%= f.date_field :date_withdrawal, autofocus: true, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="col-xs-6">
+              <%= f.label :optional_address %><br />
+              <%= f.text_field :optional_address, autofocus: true, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="col-xs-12">
+              <%= f.label :optional_info %><br />
+              <%= f.text_area(:optional_info, size: '136x10', class: 'form-control') %>
+            </div>
+          </div>
+        </div>
+
+        <div id="entrega_details">
+
+        </div>
+
         <div class="field">
           <div class="col-xs-12">
             <%= f.label :id_card %><br />
