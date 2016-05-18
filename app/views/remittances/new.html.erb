@@ -50,7 +50,8 @@
         <div class="field">
           <div class="col-xs-6">
             <%= f.label :amount_receive %><br />
-            <%= f.number_field :amount_receive, autofocus: false, disabled: true, class: 'form-control' %>
+            <%= f.hidden_field :amount_receive %>
+            <input type="number" disabled name="" id="remittance_amount_receive_view" class="form-control">
           </div>
         </div>
 

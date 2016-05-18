@@ -7,7 +7,9 @@ class RemittancesController < ApplicationController
     if current_user.role["name"] === 'admin'
       @remittances = Remittance.all
     else
-      @remittances = Remittance.where(:user => current_user.id).all
+      @remittances_transferencia = Remittance.where(:user => current_user.id, :method_pay => 'transferencia').all
+      @remittances_retiros = Remittance.where(:user => current_user.id, :method_pay => 'retiro').all
+      @remittances_entrega = Remittance.where(:user => current_user.id, :method_pay => 'entrega').all
     end
   end
 

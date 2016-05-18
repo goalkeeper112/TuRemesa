@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
+  #$("#banks_details").hide()
+  $("#entrega_details").hide()
+  $("#retiro_details").hide()
+
   $("#remittance_method_pay").on 'change keyup', ->
     console.log $(@).val()
     if $(@).val() is "transferencia"
@@ -25,39 +29,48 @@ $(document).ready ->
 
     if $("#remittance_from").val() is "VEF" and $("#remittance_to").val() is "USD"
       @result = parseFloat($(@).val()) / parseFloat($("#rate_vef").val())
-      $('#remittance_amount_receive').val(@result.toFixed(2))
+      $('#remittance_amount_receive').val(@result.toFixed(0))
+      $('#remittance_amount_receive_view').val(@result.toFixed(0))
 
     if $("#remittance_from").val() is "VEF" and $("#remittance_to").val() is "ARS"
       @result = parseFloat($(@).val()) / parseFloat($("#rate_vef").val())
       @result =  @result * parseFloat($("#rate_ars").val())
-      $('#remittance_amount_receive').val(@result.toFixed(2))
+      $('#remittance_amount_receive').val(@result.toFixed(0))
+      $('#remittance_amount_receive_view').val(@result.toFixed(0))
 
     if $("#remittance_from").val() is "VEF" and $("#remittance_to").val() is "VEF"
       @result = parseFloat($(@).val())
-      $('#remittance_amount_receive').val(@result.toFixed(2))
+      $('#remittance_amount_receive').val(@result.toFixed(0))
+      $('#remittance_amount_receive_view').val(@result.toFixed(0))
 
     if $("#remittance_from").val() is "ARS" and $("#remittance_to").val() is "USD"
       @result = parseFloat($(@).val()) / parseFloat($("#rate_ars").val())
-      $('#remittance_amount_receive').val(@result.toFixed(2))
+      $('#remittance_amount_receive').val(@result.toFixed(0))
+      $('#remittance_amount_receive_view').val(@result.toFixed(0))
 
     if $("#remittance_from").val() is "ARS" and $("#remittance_to").val() is "VEF"
       @result = parseFloat($(@).val()) / parseFloat($("#rate_ars").val())
       @result =  @result * parseFloat($("#rate_vef").val())
-      $('#remittance_amount_receive').val(@result.toFixed(2))
+      $('#remittance_amount_receive').val(@result.toFixed(0))
+      $('#remittance_amount_receive_view').val(@result.toFixed(0))
 
     if $("#remittance_from").val() is "ARS" and $("#remittance_to").val() is "ARS"
       @result = parseFloat($(@).val())
-      $('#remittance_amount_receive').val(@result.toFixed(2))
+      $('#remittance_amount_receive').val(@result.toFixed(0))
+      $('#remittance_amount_receive_view').val(@result.toFixed(0))
 
     if $("#remittance_from").val() is "USD" and $("#remittance_to").val() is "VEF"
       @result = parseFloat($(@).val()) * parseFloat($("#rate_vef").val())
-      $('#remittance_amount_receive').val(@result.toFixed(2))
+      $('#remittance_amount_receive').val(@result.toFixed(0))
+      $('#remittance_amount_receive_view').val(@result.toFixed(0))
 
     if $("#remittance_from").val() is "USD" and $("#remittance_to").val() is "ARS"
       @result = parseFloat($(@).val()) * parseFloat($("#rate_ars").val())
-      $('#remittance_amount_receive').val(@result.toFixed(2))
+      $('#remittance_amount_receive').val(@result.toFixed(0))
+      $('#remittance_amount_receive_view').val(@result.toFixed(0))
 
     if $("#remittance_from").val() is "USD" and $("#remittance_to").val() is "USD"
       @result = parseFloat($(@).val())
-      $('#remittance_amount_receive').val(@result.toFixed(2))
+      $('#remittance_amount_receive').val(@result.toFixed(0))
+      $('#remittance_amount_receive_view').val(@result.toFixed(0))
     return

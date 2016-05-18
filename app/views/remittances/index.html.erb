@@ -1,49 +1,150 @@
 <div class="container">
-  <h1 class="page-title">Tus Remesas</h1>
-  
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <% if current_user.role["name"] === 'admin' %>
-            <th>Emisor</th>
-          <% end %>
-          <th>Destinatario</th>
-          <th>País</th>
-          <th>Enviaste</th>
-          <th>Recibio</th>
-          <th>Banco</th>
-          <th>Tipo</th>
-          <th>Número de Cuenta</th>
-          <th>Cedula</th>
-          <th>Estatús</th>
-          <% if current_user.role["name"] === 'admin' %>
-            <th>Cancelar</th>
-          <% end %>
-        </tr>
-      </thead>
+  <h1 class="page-header">Tus Remesas</h1>
 
-      <tbody>
-      <% @remittances.each do |remittance| %>
-        <tr>
-          <% if current_user.role["name"] === 'admin' %>
-            <td><%= link_to remittance.user.username %></td>
-          <% end %>
-          <td><%= remittance.first_name %> <%= remittance.last_name %></td>
-          <td><%= remittance.country %></td>
-          <td><%= remittance.amount_send %> <%= remittance.from %></td>
-          <td><%= remittance.amount_receive %> <%= remittance.to %></td>
-          <td><%= remittance.bank %></td>
-          <td><%= remittance.type_account %></td>
-          <td><%= remittance.number_account %></td>
-          <td><%= remittance.id_card %></td>
-          <td><%= remittance.status %></td>
-          <% if current_user.role["name"] === 'admin' %>
-            <td><%= link_to "Cancelar", { :action => :destroy, :id => remittance.id }, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+  <div class="well">
+    <h2 class="page-title">Tipo Remesa: <span class="label label-info label-lg">Transferencia</span></h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <% if current_user.role["name"] === 'admin' %>
+              <th>Emisor</th>
+            <% end %>
+            <th>Destinatario</th>
+            <th>País</th>
+            <th>Enviaste</th>
+            <th>Recibio</th>
+            <th>Banco</th>
+            <th>Tipo</th>
+            <th>Número de Cuenta</th>
+            <th>Cedula</th>
+            <th>Estatús</th>
+            <% if current_user.role["name"] === 'admin' %>
+              <th>Cancelar</th>
+            <% end %>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @remittances_transferencia.each do |remittance| %>
+          <tr>
+            <% if current_user.role["name"] === 'admin' %>
+              <td><%= link_to remittance.user.username %></td>
+            <% end %>
+            <td><%= remittance.first_name %> <%= remittance.last_name %></td>
+            <td><%= remittance.country %></td>
+            <td><%= remittance.amount_send %> <%= remittance.from %></td>
+            <td><%= remittance.amount_receive %> <%= remittance.to %></td>
+            <td><%= remittance.bank %></td>
+            <td><%= remittance.type_account %></td>
+            <td><%= remittance.number_account %></td>
+            <td><%= remittance.id_card %></td>
+            <td><%= remittance.status %></td>
+            <% if current_user.role["name"] === 'admin' %>
+              <td><%= link_to "Cancelar", { :action => :destroy, :id => remittance.id }, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="well">
+    <h2 class="page-title">Tipo Remesa: <span class="label label-info label-lg">Retiros</span></h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <% if current_user.role["name"] === 'admin' %>
+              <th>Emisor</th>
+            <% end %>
+            <th>Destinatario</th>
+            <th>País</th>
+            <th>Enviaste</th>
+            <th>Recibio</th>
+            <th>Banco</th>
+            <th>Tipo</th>
+            <th>Número de Cuenta</th>
+            <th>Cedula</th>
+            <th>Estatús</th>
+            <% if current_user.role["name"] === 'admin' %>
+              <th>Cancelar</th>
+            <% end %>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @remittances_retiros.each do |remittance| %>
+          <tr>
+            <% if current_user.role["name"] === 'admin' %>
+              <td><%= link_to remittance.user.username %></td>
+            <% end %>
+            <td><%= remittance.first_name %> <%= remittance.last_name %></td>
+            <td><%= remittance.country %></td>
+            <td><%= remittance.amount_send %> <%= remittance.from %></td>
+            <td><%= remittance.amount_receive %> <%= remittance.to %></td>
+            <td><%= remittance.bank %></td>
+            <td><%= remittance.type_account %></td>
+            <td><%= remittance.number_account %></td>
+            <td><%= remittance.id_card %></td>
+            <td><%= remittance.status %></td>
+            <% if current_user.role["name"] === 'admin' %>
+              <td><%= link_to "Cancelar", { :action => :destroy, :id => remittance.id }, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="well">
+    <h2 class="page-title">Tipo Remesa: <span class="label label-info label-lg">Entrega Sucursal</span></h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <% if current_user.role["name"] === 'admin' %>
+              <th>Emisor</th>
+            <% end %>
+            <th>Destinatario</th>
+            <th>País</th>
+            <th>Enviaste</th>
+            <th>Recibio</th>
+            <th>Banco</th>
+            <th>Tipo</th>
+            <th>Número de Cuenta</th>
+            <th>Cedula</th>
+            <th>Estatús</th>
+            <% if current_user.role["name"] === 'admin' %>
+              <th>Cancelar</th>
+            <% end %>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @remittances_entrega.each do |remittance| %>
+          <tr>
+            <% if current_user.role["name"] === 'admin' %>
+              <td><%= link_to remittance.user.username %></td>
+            <% end %>
+            <td><%= remittance.first_name %> <%= remittance.last_name %></td>
+            <td><%= remittance.country %></td>
+            <td><%= remittance.amount_send %> <%= remittance.from %></td>
+            <td><%= remittance.amount_receive %> <%= remittance.to %></td>
+            <td><%= remittance.bank %></td>
+            <td><%= remittance.type_account %></td>
+            <td><%= remittance.number_account %></td>
+            <td><%= remittance.id_card %></td>
+            <td><%= remittance.status %></td>
+            <% if current_user.role["name"] === 'admin' %>
+              <td><%= link_to "Cancelar", { :action => :destroy, :id => remittance.id }, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
