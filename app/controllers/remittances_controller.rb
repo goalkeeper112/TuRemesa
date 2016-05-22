@@ -46,6 +46,6 @@ class RemittancesController < ApplicationController
 
   private
   def filtered_params
-   params.require(:remittance).permit(:user_id, :first_name, :last_name, :country, :from, :to, :amount_send, :amount_receive, :bank, :type_account, :number_account, :id_card)
+   params.require(:remittance).permit(:user_id, :first_name, :last_name, :country_id, :from, :to, :amount_send, :amount_receive, :bank, :type_account, :number_account, :id_card, :method_pay, :date_withdrawal, :optional_address, :optional_info)
   end
 end

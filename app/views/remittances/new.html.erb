@@ -9,12 +9,13 @@
 
         <div class="field">
           <div class="col-xs-12">
-            <%= f.label :country %><br />
-            <select class="form-control" name="remittance[country]" id="remittance_country">
+            <%= f.label :country_id %><br />
+            <%= f.select :country_id, Country.all.collect {|p| [ p.name, p.id ]}, { include_blank: true }, class: 'form-control' %>
+            <!--<select class="form-control" name="remittance[country]" id="remittance_country">
               <option value="Argentina">Argentina</option>
               <option value="Venezuela">Venezuela</option>
               <option value="Brasil">Brasil</option>
-            </select>
+            </select>-->
           </div>
         </div>
 

@@ -13,6 +13,9 @@
   <%= csrf_meta_tags %>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <%= stylesheet_link_tag "main" %>
+  <%= stylesheet_link_tag "animate" %>
+  <%= stylesheet_link_tag "baguetteBox.min" %>
 </head>
 <body>
   <div class="navbar navbar-default navbar-lg" role="navigation">
@@ -22,7 +25,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{pathFor 'main'}}">Turemesa<!--<img class="img-responsive" max-width="140" max-height="34px" style="padding-bottom: 0px; padding-top: 0px; border-top-style: solid; border-top-width: 0px; margin-top: -35px;" src="/Banner_Blanco.png" alt="">--></a>
+      <a class="navbar-brand" href="/">Turemesa<!--<img class="img-responsive" max-width="140" max-height="34px" style="padding-bottom: 0px; padding-top: 0px; border-top-style: solid; border-top-width: 0px; margin-top: -35px;" src="/Banner_Blanco.png" alt="">--></a>
     </div>
 
     <div class="navbar-collapse collapse navbar-responsive-collapse">
@@ -33,7 +36,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li><a href="/dashboard">Dashboard</a></li>
-          <li><%= link_to 'Nueva Remesa', 'remittances/new' %></li>
+          <li><%= link_to 'Nueva Remesa', controller: 'remittances', action: 'new' %></li>
           <% if current_user.role["name"] === 'admin' %>
             <li><%= link_to 'Remesas', 'remittances#index' %></li>
           <% end %>

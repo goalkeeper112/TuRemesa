@@ -32,7 +32,7 @@
               <td><%= link_to remittance.user.username %></td>
             <% end %>
             <td><%= remittance.first_name %> <%= remittance.last_name %></td>
-            <td><%= remittance.country %></td>
+            <td><%= remittance.country.name %></td>
             <td><%= remittance.amount_send %> <%= remittance.from %></td>
             <td><%= remittance.amount_receive %> <%= remittance.to %></td>
             <td><%= remittance.bank %></td>
@@ -63,9 +63,6 @@
             <th>País</th>
             <th>Enviaste</th>
             <th>Recibio</th>
-            <th>Banco</th>
-            <th>Tipo</th>
-            <th>Número de Cuenta</th>
             <th>Cedula</th>
             <th>Estatús</th>
             <% if current_user.role["name"] === 'admin' %>
@@ -81,12 +78,9 @@
               <td><%= link_to remittance.user.username %></td>
             <% end %>
             <td><%= remittance.first_name %> <%= remittance.last_name %></td>
-            <td><%= remittance.country %></td>
+            <td><%= remittance.country.name %></td>
             <td><%= remittance.amount_send %> <%= remittance.from %></td>
             <td><%= remittance.amount_receive %> <%= remittance.to %></td>
-            <td><%= remittance.bank %></td>
-            <td><%= remittance.type_account %></td>
-            <td><%= remittance.number_account %></td>
             <td><%= remittance.id_card %></td>
             <td><%= remittance.status %></td>
             <% if current_user.role["name"] === 'admin' %>
@@ -112,9 +106,9 @@
             <th>País</th>
             <th>Enviaste</th>
             <th>Recibio</th>
-            <th>Banco</th>
-            <th>Tipo</th>
-            <th>Número de Cuenta</th>
+            <th>Fecha de Retiro</th>
+            <th>Dirección</th>
+            <th>Info Adicional</th>
             <th>Cedula</th>
             <th>Estatús</th>
             <% if current_user.role["name"] === 'admin' %>
@@ -130,12 +124,12 @@
               <td><%= link_to remittance.user.username %></td>
             <% end %>
             <td><%= remittance.first_name %> <%= remittance.last_name %></td>
-            <td><%= remittance.country %></td>
+            <td><%= remittance.country.name %></td>
             <td><%= remittance.amount_send %> <%= remittance.from %></td>
             <td><%= remittance.amount_receive %> <%= remittance.to %></td>
-            <td><%= remittance.bank %></td>
-            <td><%= remittance.type_account %></td>
-            <td><%= remittance.number_account %></td>
+            <td><%= remittance.date_withdrawal %></td>
+            <td><%= remittance.optional_address %></td>
+            <td><%= remittance.optional_info %></td>
             <td><%= remittance.id_card %></td>
             <td><%= remittance.status %></td>
             <% if current_user.role["name"] === 'admin' %>

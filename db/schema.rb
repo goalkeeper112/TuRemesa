@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517130054) do
+ActiveRecord::Schema.define(version: 20160522030332) do
+
+  create_table "countries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.string   "country_code"
+    t.string   "phone_code"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "remittances", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "country"
     t.string   "from"
     t.string   "to"
     t.decimal  "amount_send"
@@ -33,8 +41,10 @@ ActiveRecord::Schema.define(version: 20160517130054) do
     t.datetime "date_withdrawal"
     t.string   "optional_address"
     t.string   "optional_info"
+    t.integer  "country_id"
   end
 
+  add_index "remittances", ["country_id"], name: "index_remittances_on_country_id"
   add_index "remittances", ["user_id"], name: "index_remittances_on_user_id"
 
   create_table "roles", force: :cascade do |t|

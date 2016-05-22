@@ -2,27 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
-  #$("#banks_details").hide()
-  $("#entrega_details").hide()
-  $("#retiro_details").hide()
-
-  $("#remittance_method_pay").on 'change keyup', ->
-    console.log $(@).val()
-    if $(@).val() is "transferencia"
-      $("#banks_details").show()
-      $("#retiro_details").hide()
-      $("#entrega_details").hide()
-
-    if $(@).val() is "entrega"
-      $("#entrega_details").show()
-      $("#banks_details").hide()
-      $("#retiro_details").hide()
-
-    if $(@).val() is "retiro"
-      $("#retiro_details").show()
-      $("#banks_details").hide()
-      $("#entrega_details").hide()
-
   $('#remittance_amount_send').bind 'change paste keyup', ->
     console.log $("#rate").val()
     console.log $(@).val()
@@ -74,3 +53,24 @@ $(document).ready ->
       $('#remittance_amount_receive').val(@result.toFixed(0))
       $('#remittance_amount_receive_view').val(@result.toFixed(0))
     return
+
+  #$("#banks_details").hide()
+  $("#entrega_details").hide()
+  $("#retiro_details").hide()
+
+  $("#remittance_method_pay").on 'change keyup', ->
+    console.log $(@).val()
+    if $(@).val() is "transferencia"
+      $("#banks_details").show()
+      $("#retiro_details").hide()
+      $("#entrega_details").hide()
+
+    if $(@).val() is "entrega"
+      $("#entrega_details").show()
+      $("#banks_details").hide()
+      $("#retiro_details").hide()
+
+    if $(@).val() is "retiro"
+      $("#retiro_details").show()
+      $("#banks_details").hide()
+      $("#entrega_details").hide()
